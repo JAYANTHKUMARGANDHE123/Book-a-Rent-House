@@ -1,0 +1,242 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Properties</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>All Properties</h2>
+
+    Search Form
+    <form id="searchForm">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="location">Location</label>
+          <input type="text" class="form-control" id="location">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="propertyType">Property Type</label>
+          <select id="propertyType" class="form-control">
+            <option value="">Select</option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="rent">Rent</label>
+          <input type="number" class="form-control" id="rent">
+        </div>
+        <div class="form-group col-md-3 align-self-end">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="noProperties" style="display: none;">
+      <p>No properties found.</p>
+    </div>
+    <div id="propertiesContainer"></div>
+  </div>
+
+  <script>
+    const properties = [
+      // Example properties data
+      {
+        propertyType: 'residential',
+        city: 'Hyderabad',
+        location: 'Kondapur',
+        rent: 20000,
+        size: '1200 sqft',
+        area: 'West',
+        face: 'East',
+        buildingType: 'Apartment',
+        advance: 50000,
+        yearsOfConstruction: 5,
+        innerFacilities: 'Gym, Pool',
+        nearbyFacilities: 'School, Hospital'
+      },
+      // Add more properties as needed
+    ];
+
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const city = document.getElementById('city').value.toLowerCase();
+      const location = document.getElementById('location').value.toLowerCase();
+      const propertyType = document.getElementById('propertyType').value.toLowerCase();
+      const rent = document.getElementById('rent').value;
+
+      const filteredProperties = properties.filter(property => {
+        return (!city || property.city.toLowerCase().includes(city)) &&
+               (!location || property.location.toLowerCase().includes(location)) &&
+               (!propertyType || property.propertyType.toLowerCase() === propertyType) &&
+               (!rent || property.rent <= rent);
+      });
+
+      displayProperties(filteredProperties);
+    });
+
+    function displayProperties(properties) {
+      const propertiesContainer = document.getElementById('propertiesContainer');
+      propertiesContainer.innerHTML = '';
+
+      if (properties.length === 5) {
+        document.getElementById('noProperties').style.display = 'block';
+      } else {
+        document.getElementById('noProperties').style.display = 'none';
+        properties.forEach(property => {
+          const propertyCard = document.createElement('div');
+          propertyCard.className = 'card mb-3';
+          propertyCard.innerHTML = `
+            <div class="card-body">
+              <h5 class="card-title">${property.propertyType.toUpperCase()} Property</h5>
+              <p class="card-text"><strong>City:</strong> ${property.city}</p>
+              <p class="card-text"><strong>Location:</strong> ${property.location}</p>
+              <p class="card-text"><strong>Rent:</strong> ${property.rent}</p>
+              <p class="card-text"><strong>Size:</strong> ${property.size}</p>
+              <p class="card-text"><strong>Area:</strong> ${property.area}</p>
+              <p class="card-text"><strong>Face:</strong> ${property.face}</p>
+              <p class="card-text"><strong>Building Type:</strong> ${property.buildingType}</p>
+              <p class="card-text"><strong>Advance:</strong> ${property.advance}</p>
+              <p class="card-text"><strong>Years of Construction:</strong> ${property.yearsOfConstruction}</p>
+              <p class="card-text"><strong>Inner Facilities:</strong> ${property.innerFacilities}</p>
+              <p class="card-text"><strong>Nearby Facilities:</strong> ${property.nearbyFacilities}</p>
+            </div>
+          `;
+          propertiesContainer.appendChild(propertyCard);
+        });
+      }
+    }
+
+    // Initial display of properties
+    displayProperties(properties);
+  </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Rent House</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+  <style>
+    .container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid nav-bar bg-transparent">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+        <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="img/icon-deal.png" alt="Icon" style="width: 30px; height: 30px;">
+            </div>
+            <h1 class="m-0 text-primary">Book a Rent House</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link active">About</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="view Properties.html" class="dropdown-item">Property List</a>
+                        <a href="property-type.html" class="dropdown-item">Property Type</a>
+                        <a href="property-agent.html" class="dropdown-item">Property Agent</a>
+                    </div>
+                </div>
+                <a href="login.html" class="nav-link nav-item">Login</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a>
+        </div>
+    </nav>
+</div>
+  <div class="container">
+    <!-- <h2>All Properties</h2> -->
+    <!-- Search Form -->
+    <form id="searchForm">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="city">City</label>
+          <!-- <input type="text" class="form-control" id="city"> -->
+          <select id="city" class="form-control">
+            <option value="">Select</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <!-- <option value="Bangalore">Bangalore</option> -->
+            <option value="Kamareddy">Kamareddy</option>
+            <option value="Chennai">Chennai</option>
+            <!-- Add more cities as needed -->
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="location">Location</label>
+          <!-- <input type="text" class="form-control" id="location"> -->
+          <select id="location" class="form-control">
+            <option value="">Select</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="propertyType">Property Type</label>
+          <select id="propertyType" class="form-control">
+            <option value="">Select</option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="rent">Rent</label>
+          <input type="number" class="form-control" id="rent">
+        </div>
+        <div class="form-group col-md-3 align-self-end">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="noProperties" style="display: none;">
+      <p>No properties found.</p>
+    </div>
+    <div id="propertiesContainer"></div>
+  </div>
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <script src="view.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Book a Rent House</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <script src="https://smtpjs.com/v3/smtp.js"> </script>
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="container"> 
+    
+  <h1 class="m-0 text-primary" style="padding-top:15px;">Book a Rent House</h1>
+
+        <div class="form-container sign-up-container">
+            <form id="registerForm">
+                <h1>Create Account</h1>
+                <input type="text" id="registerUsername" placeholder="Username" required />
+                <input type="email" id="registerEmail"  placeholder="Email" required />
+                <input type="password" id="registerPassword" placeholder="Password" required />
+                <select class="form-select" id="usertype"   required>
+                    <option selected>Type of User</option>
+                    <option value="Admin">Admin</option>
+                    <option value="EndUser">EndUser</option>
+                </select>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form id="loginForm">
+                <h1>Sign in</h1>
+                <!-- <input type="text" id="loginUsername" placeholder="Username" required /> -->
+                <input type="email" id="loginEmail"  placeholder="Email" required />
+                <input type="password" id="loginPassword" placeholder="Password"  required  />
+                <!-- <button onclick="sendOTP()">Send OTP</button> -->
+                 <button type="submit" id="send">send mail</button>
+                  <button  onclick="otp()"  type="button">M-OTP</button>
+                 <h2  id="otp"></h2>
+    
+    <input type="number" id="num" placeholder="Enter the Otp">
+    <button onclick="run()" id="btn">Submit</button>
+
+    <h1  id="result"></h1>
+
+                <!-- <div class="otp-verify">
+                  <input type="text" id="otp" placeholder="Enter OTP" required>
+                  <button  id="otp-btn">Verify and Sign In</button>
+                  <a href="forget.html">Forget Password</a>  -->
+                  <!-- </div>
+                  
+                <button>Sign In</button> -->
+            </form>
+        </div>
+    </div>
+    <script src="login.js"></script>
+
+
+     <!-- JavaScript Libraries -->
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="lib/wow/wow.min.js"></script>
+     <script src="lib/easing/easing.min.js"></script>
+     <script src="lib/waypoints/waypoints.min.js"></script>
+     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+ 
+     <!-- Template Javascript -->
+     <script src="js/main.js"></script>
+     <script>
+        var str="";
+       function otp(){
+
+        const b=document.getElementById("loginEmail");
+        const c=document.getElementById("loginPassword");
+        const L= document.getElementById("otp");
+
+        for(let i=0;i<=4 ;i++){
+        var num=Math.floor(Math.random()*10);
+        str=str+num;
+        } if( b.value.length>0 && c.value.length>0){
+        document.getElementById("otp").innerHTML="Otp: "+str;
+        } 
+     }
+
+     function run(){
+        var a=document.getElementById("num").value;
+        if(a==str){
+            // window.location.href="index.html";
+            // Simulate getting the user role after login
+const user = {
+    role: 'admin' // This would be dynamically set based on the logged-in user's role
+};
+
+// Function to redirect based on user role
+function redirectBasedOnRole(user) {
+    switch(user.role) {
+        case 'admin':
+            window.location.href = 'admin-dashboard.html';
+            break;
+        case 'user':
+            window.location.href = 'user-dashboard.html';
+            break;
+        // case 'guest':
+        //     window.location.href = '/guest/dashboard.html';
+        //     break;
+        default:
+            window.location.href = 'login.html';
+            break;
+    }
+}
+
+// Call the function after login
+redirectBasedOnRole(user);
+
+        }
+        else{
+            alert("invalid Otp")
+        }
+        
+     }
+    </script>
+</body>
+</html>

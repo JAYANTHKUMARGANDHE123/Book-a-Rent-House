@@ -1,0 +1,253 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Property Form</title>
+</head>
+<body>
+    <h1>Property Form</h1>
+    <form id="propertyForm">
+        <label for="propertyType">Property Type:</label>
+        <select id="propertyType" required>
+            <option value="">Select</option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+        </select>
+
+        <div id="residentialFields" style="display:none;">
+            <h2>Residential Details</h2>
+            <label for="resCity">City:</label>
+            <select id="resCity">
+                <option value="">Select</option>
+            </select>
+            <label for="resLocation">Location:</label>
+            <select id="resLocation">
+                <option value="">Select</option>
+            </select>
+            <label for="resRent">Rent:</label>
+            <input type="number" id="resRent" required>
+            Add other residential fields here 
+        </div>
+
+        <div id="commercialFields" style="display:none;">
+            <h2>Commercial Details</h2>
+            <label for="comCity">City:</label>
+            <select id="comCity">
+                <option value="">Select</option>
+            </select>
+            <label for="comLocation">Location:</label>
+            <select id="comLocation">
+                <option value="">Select</option>
+            </select>
+            <label for="comRent">Rent:</label>
+            <input type="number" id="comRent" required>
+             Add other commercial fields here
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="addProperty.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+
+      <h1 class="m-0 text-primary">Book a Rent House</h1>   
+
+        <form id="propertyForm">
+          <div class="form-group">
+            <label for="propertyType">Property Type</label>
+            <select class="form-control" id="propertyType" name="propertyType">
+              <option value="">Select...</option>
+              <option value="residential">Residential</option>
+              <option value="commercial">Commercial</option>
+            </select>
+          </div>
+      
+          <div id="residentialSection" style="display: none;">
+            <h3>Residential Property Details</h3>
+            <div class="form-group">
+              <label for="resCity">City</label>
+              <select class="form-control" id="resCity" name="resCity" >
+                <option value="">Select City...</option>
+                <option1></option1>
+                <option2></option2>
+                <!-- Options will be populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="resLocation">Location</label>
+              <select class="form-control" id="resLocation" name="resLocation" >
+                <!-- Options will be populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="resRent">Rent ($)</label>
+              <input type="number" class="form-control" id="resRent" name="resRent">
+            </div>
+            <div class="form-group">
+              <label for="resSize">Size of Property</label>
+              <select class="form-control" id="resSize" name="resSize">
+                <option value="1Rk">1 Rk</option>
+                <option value="1Bhk">1 Bhk</option>
+                <option value="2Bhk">2 Bhk</option>
+                <option value="3Bhk">3 Bhk</option>
+                <option value="duplex">Duplex House</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="resArea">Area of Property (Sft)</label>
+              <input type="number" class="form-control" id="resArea" name="resArea">
+            </div>
+            <div class="form-group">
+              <label for="resFace">Face of Property</label>
+              <select class="form-control" id="resFace" name="resFace">
+                <option value="east">East</option>
+                <option value="west">West</option>
+                <option value="north">North</option>
+                <option value="south">South</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="resBuildingType">Building Type</label>
+              <select class="form-control" id="resBuildingType" name="resBuildingType" >
+                <option value="independent">Independent</option>
+                <option value="apartment">Apartment (Floor)</option>
+              </select>
+              <input type="number" class="form-control mt-2" id="resFloor" name="resFloor" placeholder="Floor number" style="display: none;">
+            </div>
+            <div class="form-group">
+              <label for="resYearsOfConstruction">Years of Construction (optional)</label>
+              <input type="number" class="form-control" id="resYearsOfConstruction" name="resYearsOfConstruction">
+            </div>
+            <div class="form-group">
+              <label for="resAdvance">Advance Payment ($)</label>
+              <input type="number" class="form-control" id="resAdvance" name="resAdvance">
+            </div>
+            <div class="form-group">
+              <label for="resPhotos">Photos</label>
+              <input type="file" class="form-control" id="resPhotos" name="resPhotos" multiple>
+            </div>
+            <div class="form-group">
+              <label for="resInnerFacilities">Inner Facilities</label>
+              <textarea class="form-control" id="resInnerFacilities" name="resInnerFacilities"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="resNearbyFacilities">Nearby Facilities</label>
+              <textarea class="form-control" id="resNearbyFacilities" name="resNearbyFacilities"></textarea>
+            </div>
+          </div>
+      
+          <div id="commercialSection" style="display: none;">
+            <h3>Commercial Property Details</h3>
+            <div class="form-group">
+              <label for="comCity">City</label>
+              <select class="form-control" id="comCity" name="comCity" onchange="onCityChange('comCity')">
+                <option value="">Select City...</option>
+                <!-- Options will be populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="comLocation">Location</label>
+              <select class="form-control" id="comLocation" name="comLocation" disabled>
+                <!-- Options will be populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="comRent">Rent ($)</label>
+              <input type="number" class="form-control" id="comRent" name="comRent">
+            </div>
+            <div class="form-group">
+              <label for="comSize">Size of Property</label>
+              <select class="form-control" id="comSize" name="comSize">
+                <option value="shutter">Shutter</option>
+                <option value="office">Office</option>
+                <option value="includesBedroom">Includes Bedroom</option>
+                <option value="includesKitchen">Includes Kitchen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="comArea">Area of Property (Sft)</label>
+              <input type="number" class="form-control" id="comArea" name="comArea">
+            </div>
+            <div class="form-group">
+              <label for="comFace">Face of Property</label>
+              <select class="form-control" id="comFace" name="comFace">
+                <option value="east">East</option>
+                <option value="west">West</option>
+                <option value="north">North</option>
+                <option value="south">South</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="comBuildingType">Building Type</label>
+              <select class="form-control" id="comBuildingType" name="comBuildingType" onchange="onBuildingTypeChange('comBuildingType', 'comFloor')">
+                <option value="independent">Independent</option>
+                <option value="apartment">Apartment (Floor)</option>
+              </select>
+              <input type="number" class="form-control mt-2" id="comFloor" name="comFloor" placeholder="Floor number" style="display: none;">
+            </div>
+            <div class="form-group">
+              <label for="comYearsOfConstruction">Years of Construction (optional)</label>
+              <input type="number" class="form-control" id="comYearsOfConstruction" name="comYearsOfConstruction">
+            </div>
+            <div class="form-group">
+              <label for="comAdvance">Advance Payment ($)</label>
+              <input type="number" class="form-control" id="comAdvance" name="comAdvance">
+            </div>
+            <div class="form-group">
+              <label for="comPhotos">Photos</label>
+              <input type="file" class="form-control" id="comPhotos" name="comPhotos" multiple>
+            </div>
+            <div class="form-group">
+              <label for="comInnerFacilities">Inner Facilities</label>
+              <textarea class="form-control" id="comInnerFacilities" name="comInnerFacilities"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="comNearbyFacilities">Nearby Facilities</label>
+              <textarea class="form-control" id="comNearbyFacilities" name="comNearbyFacilities"></textarea>
+            </div>
+          </div>
+      
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+      </div>
+      <script src="addProperty.js"></script>
+
+</body>
+</html>
+  
